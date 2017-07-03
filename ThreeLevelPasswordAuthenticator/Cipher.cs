@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Security.Cryptography;
 
-namespace ThreeLevelPasswordAuthenticator
+namespace kdt.ThreeLevelPasswordAuthenticator.Security
 {
     public class Cipher
     {

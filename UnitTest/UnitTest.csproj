@@ -49,6 +49,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ThreeLevelPasswordAuthenticator\ThreeLevelPasswordAuthenticator.csproj">
+      <Project>{c0e2bd7c-2f8e-49eb-8837-fbf460fe8fad}</Project>
+      <Name>ThreeLevelPasswordAuthenticator</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

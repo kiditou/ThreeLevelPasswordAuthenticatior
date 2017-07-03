@@ -4,12 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using kdt.ThreeLevelPasswordAuthenticator.Security;
+
 namespace UnitTest
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            string clearString = "The quick brown fox jumps over the lazy dog.";
+            string encryptedString = Cipher.EncryptString(clearString, "AyyLmaoXD");
+
+            Console.WriteLine("Clear Text:\t{0}", clearString);
+            Console.WriteLine("Encrypted Text:\t{0}", encryptedString);
         }
     }
 }
