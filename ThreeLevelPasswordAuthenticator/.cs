@@ -9,5 +9,6 @@ namespace ThreeLevelPasswordAuthenticator
     public class Class1
     {
         // oishite ageru.
+        // master commit
     }
 }
