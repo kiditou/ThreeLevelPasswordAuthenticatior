@@ -8,5 +8,6 @@ namespace ThreeLevelPasswordAuthenticator
 {
     class Cipher
     {
+
     }
 }
