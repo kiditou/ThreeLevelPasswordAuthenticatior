@@ -8,7 +8,7 @@ using System.IO;
 
 namespace kdt.ThreeLevelPasswordAuthenticator.UserManagement
 {
-    internal class UserManager
+    public class UserManager
     {
         public static User ReadFromFile(string filePath)
         {
@@ -99,6 +99,13 @@ namespace kdt.ThreeLevelPasswordAuthenticator.UserManagement
 
         public static void WriteToFile(User user)
         {
+            string filePath = string.Format(@"Users\{0}.usr", user.Username);
+
+            WriteToFile(filePath, user);
+        }
+
+        public static void WriteToFile(string filePath, User user)
+        {
             string dateNow = DateTime.Now.ToShortDateString();
             string timeNow = DateTime.Now.ToShortTimeString();
 
@@ -113,10 +120,8 @@ namespace kdt.ThreeLevelPasswordAuthenticator.UserManagement
                 string.Format("Username = {0}", user.Username)
             };
 
-            string file = string.Format(@"Users\{0}.usr", user.Username);
-
-            File.Create(file);
-            File.WriteAllLines(file, fileContents);
+            File.Create(filePath);
+            File.WriteAllLines(filePath, fileContents);
         }
 
         // TODO: Add AppendToFile() method.

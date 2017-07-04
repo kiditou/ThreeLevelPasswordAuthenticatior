@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.IO;
+using kdt.ThreeLevelPasswordAuthenticator.UserManagement;
+
 using kdt.ThreeLevelPasswordAuthenticator.Security;
 
 namespace UnitTest
@@ -11,6 +14,25 @@ namespace UnitTest
     internal class Program
     {
         private static void Main(string[] args)
+        {
+            if (Directory.Exists(@"Users\"))
+            {
+                UserManagerTest();
+            }
+            else
+            {
+                Directory.CreateDirectory(@"Users\");
+                UserManagerTest();
+            }
+        }
+
+        private static void UserManagerTest()
+        {
+            User kiditou = new User("Ron Michael", "kiditou", "endGemePlease79", "I4m,y0urF4th3r");
+            UserManager.WriteToFile(kiditou);
+        }
+
+        private static void EncryptionTestingForFiles()
         {
             string clearFile = @"G:\TestDirectory\kdt.txt";
             string encryptedFile = @"G:\TestDirectory\kdt.txt.cry";
