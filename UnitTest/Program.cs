@@ -28,8 +28,9 @@ namespace UnitTest
 
         private static void UserManagerTest()
         {
-            User kiditou = new User("Ron Michael", "kiditou", "endGemePlease79", "I4m,y0urF4th3r");
-            UserManager.WriteToFile(kiditou);
+            User kiditou = new User("Ron Michael", "kiditou", "endGemePlease", "I4m,y0urF4th3r");
+            User user = UserManager.ReadFromFile(@"Users\kiditou.usr");
+            Console.WriteLine(user.Name);
         }
 
         private static void EncryptionTestingForFiles()

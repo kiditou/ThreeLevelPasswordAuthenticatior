@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using System.IO;
 
@@ -13,18 +9,20 @@ namespace kdt.ThreeLevelPasswordAuthenticator.UserManagement
         public static User ReadFromFile(string filePath)
         {
             string[] fileContents = null;
+
             if (File.Exists(filePath))
             {
                 fileContents = File.ReadAllLines(filePath);
             }
 
-            string[] currentLine = null;
-            string optionTitle = null;
-            string optionContent = null;
-            StringSplitOptions splitOption = StringSplitOptions.RemoveEmptyEntries;
-            string[] lineSeparator = new string[] { " = " };
-
             User user = new User();
+
+            string[] currentLine;
+            string[] lineSeparator = new string[] { " = " };
+            StringSplitOptions splitOption = StringSplitOptions.RemoveEmptyEntries;
+
+            string currentTitle = null;
+            string currentContent = null;
 
             if (fileContents != null)
             {
@@ -32,69 +30,34 @@ namespace kdt.ThreeLevelPasswordAuthenticator.UserManagement
                 {
                     currentLine = fileContents[l].Split(lineSeparator, splitOption);
 
-                    optionTitle = currentLine[0];
-                    optionContent = currentLine[1];
-
                     if (currentLine.Length != 0)
                     {
-                        switch (optionTitle)
+                        currentTitle = currentLine[0];
+                        currentContent = currentLine[1];
+
+                        switch (currentTitle)
                         {
                             case "Name":
-                                if (optionContent.Length != 0)
-                                {
-                                    user.Name = optionContent;
-                                }
-                                else
-                                {
-                                    user.Name = null;
-                                }
+                                user.Name = currentContent;
                                 break;
 
                             case "Passphrase":
-                                if (optionContent.Length != 0)
-                                {
-                                    user.Passphrase = optionContent;
-                                }
-                                else
-                                {
-                                    user.Passphrase = null;
-                                }
+                                user.Passphrase = currentContent;
                                 break;
 
                             case "Passpword":
-                                if (optionContent.Length != 0)
-                                {
-                                    user.Password = optionContent;
-                                }
-                                else
-                                {
-                                    user.Password = null;
-                                }
+                                user.Password = currentContent;
                                 break;
 
                             case "Username":
-                                if (optionContent.Length != 0)
-                                {
-                                    user.Username = optionContent;
-                                }
-                                else
-                                {
-                                    user.Username = null;
-                                }
+                                user.Username = currentContent;
                                 break;
                         }
                     }
                 }
             }
-            else
-            {
-                user.Name = null;
-                user.Passphrase = null;
-                user.Password = null;
-                user.Username = null;
-            }
 
-            return new User();
+            return user;
         }
 
         public static void WriteToFile(User user)
@@ -120,7 +83,6 @@ namespace kdt.ThreeLevelPasswordAuthenticator.UserManagement
                 string.Format("Username = {0}", user.Username)
             };
 
-            File.Create(filePath);
             File.WriteAllLines(filePath, fileContents);
         }
 
