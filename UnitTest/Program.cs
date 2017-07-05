@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.IO;
-using kdt.ThreeLevelPasswordAuthenticator.UserManagement;
 
+using kdt.ThreeLevelPasswordAuthenticator.UserManagement;
 using kdt.ThreeLevelPasswordAuthenticator.Security;
+using kdt.ThreeLevelPasswordAuthenticator.Authentication;
 
 namespace UnitTest
 {
@@ -15,15 +16,17 @@ namespace UnitTest
     {
         private static void Main(string[] args)
         {
-            if (Directory.Exists(@"Users\"))
-            {
-                UserManagerTest();
-            }
-            else
-            {
-                Directory.CreateDirectory(@"Users\");
-                UserManagerTest();
-            }
+            ValditationTest();
+        }
+
+        private static void ValditationTest()
+        {
+            User kiditou = new User("Ron Michael", "kiditou", "endGemePlease", "I4m,y0urF4th3r");
+            ValidationToken vt = Authenticator.AuthenticatePassword(kiditou);
+            Console.WriteLine(kiditou.Password);
+            Console.WriteLine();
+            Console.WriteLine("Validation Type: {0}", vt.ValidationType);
+            Console.WriteLine("Validation Result: {0}", vt.Result.ToString());
         }
 
         private static void UserManagerTest()

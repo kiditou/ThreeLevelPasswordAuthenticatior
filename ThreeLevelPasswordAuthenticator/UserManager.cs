@@ -29,8 +29,7 @@ namespace kdt.ThreeLevelPasswordAuthenticator.UserManagement
                 for (int l = 0; l < fileContents.Length; l++)
                 {
                     currentLine = fileContents[l].Split(lineSeparator, splitOption);
-
-                    if (currentLine.Length != 0)
+                    if (currentLine.Length > 1) // HACK: This needs editing.
                     {
                         currentTitle = currentLine[0];
                         currentContent = currentLine[1];
@@ -45,7 +44,7 @@ namespace kdt.ThreeLevelPasswordAuthenticator.UserManagement
                                 user.Passphrase = currentContent;
                                 break;
 
-                            case "Passpword":
+                            case "Password":
                                 user.Password = currentContent;
                                 break;
 
@@ -56,7 +55,6 @@ namespace kdt.ThreeLevelPasswordAuthenticator.UserManagement
                     }
                 }
             }
-
             return user;
         }
 
