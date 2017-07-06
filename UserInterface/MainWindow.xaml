@@ -5,7 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UserInterface"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        Title="MainWindow" Height="596" Width="679">
     <Grid>
+        <ScrollViewer Margin="215.5,133,215.5,106" VerticalScrollBarVisibility="Disabled" Width="240" Height="327" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid RenderTransformOrigin="0,0" Margin="0,140,-184,0" Height="320" VerticalAlignment="Top">
+            <Grid HorizontalAlignment="Left" Margin="25,20,0,120" Width="195">
+                <Ellipse Fill="#FFF4F4F5" Margin="50,10,50,55" Stroke="Black" Height="95" Width="95"/>
+            </Grid>
+            <TextBox x:Name="textBox" Margin="45,0,0,80" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Left" Height="30" VerticalAlignment="Bottom" Width="160" FontWeight="Normal"/>
+            <Button x:Name="button" Content="NEXT" HorizontalAlignment="Left" Height="40" Margin="150,0,0,10" VerticalAlignment="Bottom" Width="70" Foreground="#DD000000"/>
+        </Grid>
     </Grid>
 </Window>
