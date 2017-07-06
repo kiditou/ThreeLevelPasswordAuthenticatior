@@ -27,6 +27,18 @@ namespace UnitTest
             Console.WriteLine();
             Console.WriteLine("Validation Type: {0}", vt.ValidationType);
             Console.WriteLine("Validation Result: {0}", vt.Result.ToString());
+            Console.WriteLine();
+            vt = Authenticator.AuthenticatePassphrase(kiditou);
+            Console.WriteLine(kiditou.Passphrase);
+            Console.WriteLine();
+            Console.WriteLine("Validation Type: {0}", vt.ValidationType);
+            Console.WriteLine("Validation Result: {0}", vt.Result.ToString());
+            Console.WriteLine();
+            vt = Authenticator.Captcha("0q54ax");
+            Console.WriteLine("0q54ax");
+            Console.WriteLine();
+            Console.WriteLine("Validation Type: {0}", vt.ValidationType);
+            Console.WriteLine("Validation Result: {0}", vt.Result.ToString());
         }
 
         private static void UserManagerTest()
