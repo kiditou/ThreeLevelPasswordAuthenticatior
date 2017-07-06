@@ -13,26 +13,188 @@
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="MainWindow" Height="360" Width="240" FontSize="13.333" WindowStartupLocation="CenterScreen" SnapsToDevicePixels="True" ResizeMode="CanMinimize" WindowStyle="None">
+    <Window.Resources>
+        <Storyboard x:Key="OnContextMenuClosing1"/>
+        <Storyboard x:Key="captchaVerified">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="captchaTextBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="captchaNextButton">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="textBlock1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="sliderGrid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-240">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="usernameVerified">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="sliderGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-240">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-480">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="infoGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-240">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="infoGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="usernameTextBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="usernameNextButton">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="passwordVerified">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="sliderGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-480">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-720">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="infoGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="infoGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-240"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="passwordPasswordBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="passwordNextButton">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="captchaNextButtonOnClick">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="captchaNextButton">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="captchaNextButton">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="captchaNextButton">
+            <BeginStoryboard x:Name="captchaNextButtonOnClick_BeginStoryboard" Storyboard="{StaticResource captchaNextButtonOnClick}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid Margin="0">
         <Grid.Background>
             <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
         </Grid.Background>
-        <ScrollViewer x:Name="loginScrollViewer" Margin="0" VerticalScrollBarVisibility="Disabled" Width="240" HorizontalAlignment="Center" Height="350" VerticalAlignment="Center" Background="White" d:IsHidden="True"/>
-        <Grid x:Name="sliderGrid" RenderTransformOrigin="0,0" Margin="0,0,-615.875,0" Height="360" VerticalAlignment="Top" HorizontalAlignment="Left" Width="855.875">
-            <Grid x:Name="infoGrid" HorizontalAlignment="Left" Margin="20,20,0,130.5" Width="200">
-                <Ellipse Fill="#FFF4F4F5" Margin="50,10,50,55" Stroke="Black" Height="95" Width="95"/>
-                <TextBlock x:Name="textBlock" Height="44.5" Margin="0,0,0,10" TextWrapping="Wrap" Text="Ron Michael Dela Cruz" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="17.333" HorizontalAlignment="Center"/>
-            </Grid>
+        <Grid x:Name="sliderGrid" RenderTransformOrigin="0,0" Margin="0,0,-720,0" Height="360" VerticalAlignment="Top" HorizontalAlignment="Left" Width="960" Background="White">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
 
             <TextBox x:Name="usernameTextBox"
-                     Margin="40,0,0,100.5" TextWrapping="Wrap"
-                     HorizontalAlignment="Left" Height="40"
-                     VerticalAlignment="Bottom" Width="160" FontWeight="Normal"
-                     materialDesign:HintAssist.Hint="Username"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        		Margin="280,0,0,120" TextWrapping="Wrap"
+        		HorizontalAlignment="Left" Height="40"
+        		VerticalAlignment="Bottom" Width="160" FontWeight="Normal"
+        		materialDesign:HintAssist.Hint="Username"
+        		Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
 
-            <Button x:Name="button" Content="NEXT" HorizontalAlignment="Left" Height="40" Margin="150,0,0,20" VerticalAlignment="Bottom" Width="70" Foreground="#DD000000" FontSize="13.333"/>
+            <Button x:Name="usernameNextButton" Content="NEXT" HorizontalAlignment="Left" Height="40" Margin="325,0,0,40" VerticalAlignment="Bottom" Width="70" Foreground="#DD000000" FontSize="13.333"/>
+
+            <PasswordBox x:Name="passwordPasswordBox"
+        		Margin="520,0,0,120"  Height="40"
+        		VerticalAlignment="Bottom" FontWeight="Normal"
+        		materialDesign:HintAssist.Hint="Password"
+        		Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" HorizontalAlignment="Left" Width="160"/>
+            <Button x:Name="passwordNextButton" Content="NEXT" HorizontalAlignment="Right" Height="40" Margin="0,0,320,40" VerticalAlignment="Bottom" Width="70" Foreground="#DD000000" FontSize="13.333"/>
+
+            <PasswordBox x:Name="passphrasePasswordBox"
+        		Margin="0,0,40,120"  Height="40"
+        		VerticalAlignment="Bottom" FontWeight="Normal"
+        		materialDesign:HintAssist.Hint="Passphrase"
+        		Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" HorizontalAlignment="Right" Width="160"/>
+            <Button x:Name="button_Copy1" Content="NEXT" HorizontalAlignment="Right" Height="40" Margin="0,0,85,40" VerticalAlignment="Bottom" Width="70" Foreground="#DD000000" FontSize="13.333"/>
+            <TextBox x:Name="captchaTextBox"
+            	Margin="40,0,0,120" TextWrapping="Wrap"
+            	HorizontalAlignment="Left" Height="40"
+            	VerticalAlignment="Bottom" Width="160" FontWeight="Normal"
+            	materialDesign:HintAssist.Hint="Captcha"
+            	Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <Button x:Name="captchaNextButton" Content="NEXT" HorizontalAlignment="Left" Height="40" Margin="85,0,0,40" VerticalAlignment="Bottom" Width="70" Foreground="#DD000000" FontSize="13.333"/>
+            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="145" Margin="55,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" TextAlignment="Center"><Run Text="Type this text to the text field to continue:"/><LineBreak/><Run/><LineBreak/><LineBreak/><LineBreak/><Run FontSize="24" Text="0ba1t484"/></TextBlock>
         </Grid>
-        <Button x:Name="button1" Content="Button" HorizontalAlignment="Right" Height="15" VerticalAlignment="Bottom" Width="15"/>
+        <Grid x:Name="infoGrid" Margin="260,20,-220,0" Height="170" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Opacity="0" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <Ellipse x:Name="ellipse" Fill="#FFF4F4F5" Margin="50,10,50,55" Stroke="Black" Height="95" Width="95" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <TextBlock x:Name="textBlock" Height="25" Margin="0,0,0,10" TextWrapping="Wrap" Text="Ron Michael Dela Cruz" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16" d:LayoutOverrides="Width" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+        </Grid>
     </Grid>
 </Window>
