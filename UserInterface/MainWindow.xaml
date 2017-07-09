@@ -12,9 +12,8 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Title="MainWindow" Height="360" Width="240" FontSize="13.333" WindowStartupLocation="CenterScreen" SnapsToDevicePixels="True" ResizeMode="CanMinimize" WindowStyle="None">
+        Title="MainWindow" Height="388" Width="258" FontSize="13.333" WindowStartupLocation="CenterScreen" SnapsToDevicePixels="True" ResizeMode="NoResize">
     <Window.Resources>
-        <Storyboard x:Key="OnContextMenuClosing1"/>
         <Storyboard x:Key="captchaVerified">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="captchaTextBox">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
@@ -76,7 +75,7 @@
                         <CubicEase EasingMode="EaseInOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-720">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-700">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <CubicEase EasingMode="EaseInOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
@@ -89,6 +88,7 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="-240"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="passwordPasswordBox">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <CubicEase EasingMode="EaseInOut"/>
@@ -96,36 +96,20 @@
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="passwordNextButton">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <CubicEase EasingMode="EaseInOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="captchaNextButtonOnClick">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="captchaNextButton">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="captchaNextButton">
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
-            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="captchaNextButton">
-            <BeginStoryboard x:Name="captchaNextButtonOnClick_BeginStoryboard" Storyboard="{StaticResource captchaNextButtonOnClick}"/>
-        </EventTrigger>
-    </Window.Triggers>
     <Grid Margin="0">
         <Grid.Background>
-            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
+            <SolidColorBrush Color="#FFFAFAFA"/>
         </Grid.Background>
-        <Grid x:Name="sliderGrid" RenderTransformOrigin="0,0" Margin="0,0,-720,0" Height="360" VerticalAlignment="Top" HorizontalAlignment="Left" Width="960" Background="White">
+        <Grid x:Name="sliderGrid" RenderTransformOrigin="0,0" Margin="0,0,-698,0" HorizontalAlignment="Left" Width="960">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -149,14 +133,23 @@
         		VerticalAlignment="Bottom" FontWeight="Normal"
         		materialDesign:HintAssist.Hint="Password"
         		Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" HorizontalAlignment="Left" Width="160"/>
-            <Button x:Name="passwordNextButton" Content="NEXT" HorizontalAlignment="Right" Height="40" Margin="0,0,320,40" VerticalAlignment="Bottom" Width="70" Foreground="#DD000000" FontSize="13.333"/>
+            <Button x:Name="passwordNextButton" Content="NEXT" Height="40" Margin="565,0,0,40" VerticalAlignment="Bottom" Foreground="#DD000000" FontSize="13.333" HorizontalAlignment="Left" Width="70"/>
 
             <PasswordBox x:Name="passphrasePasswordBox"
-        		Margin="0,0,40,120"  Height="40"
+        		Margin="0,0,60,118.5"  Height="40"
         		VerticalAlignment="Bottom" FontWeight="Normal"
         		materialDesign:HintAssist.Hint="Passphrase"
         		Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" HorizontalAlignment="Right" Width="160"/>
-            <Button x:Name="button_Copy1" Content="NEXT" HorizontalAlignment="Right" Height="40" Margin="0,0,85,40" VerticalAlignment="Bottom" Width="70" Foreground="#DD000000" FontSize="13.333"/>
+            <Button x:Name="passphraseNextButton" Content="NEXT" Height="40" Margin="785.002,0,0,40" VerticalAlignment="Bottom" Foreground="#DD000000" FontSize="13.333" HorizontalAlignment="Left" Width="70" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
             <TextBox x:Name="captchaTextBox"
             	Margin="40,0,0,120" TextWrapping="Wrap"
             	HorizontalAlignment="Left" Height="40"
@@ -164,7 +157,7 @@
             	materialDesign:HintAssist.Hint="Captcha"
             	Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
             <Button x:Name="captchaNextButton" Content="NEXT" HorizontalAlignment="Left" Height="40" Margin="85,0,0,40" VerticalAlignment="Bottom" Width="70" Foreground="#DD000000" FontSize="13.333"/>
-            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="145" Margin="55,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" TextAlignment="Center"><Run Text="Type this text to the text field to continue:"/><LineBreak/><Run/><LineBreak/><LineBreak/><LineBreak/><Run FontSize="24" Text="0ba1t484"/></TextBlock>
+            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="145" Margin="47.5,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" TextAlignment="Center"><Run Text="Type this text to the text field to continue:"/><LineBreak/><Run/><LineBreak/><LineBreak/><LineBreak/><Run FontSize="24" Text="0ba1t484"/></TextBlock>
         </Grid>
         <Grid x:Name="infoGrid" Margin="260,20,-220,0" Height="170" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Opacity="0" RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
@@ -185,7 +178,7 @@
                     </TransformGroup>
                 </Ellipse.RenderTransform>
             </Ellipse>
-            <TextBlock x:Name="textBlock" Height="25" Margin="0,0,0,10" TextWrapping="Wrap" Text="Ron Michael Dela Cruz" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16" d:LayoutOverrides="Width" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <TextBlock x:Name="nameTextBlock" Height="25" Margin="0,0,0,10" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16" d:LayoutOverrides="Width" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                 <TextBlock.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>

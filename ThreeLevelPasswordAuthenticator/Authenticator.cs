@@ -39,7 +39,7 @@ namespace kdt.ThreeLevelPasswordAuthenticator.Authentication
             ValidationToken vt = new ValidationToken();
             vt.ValidationType = ValidationType.Password;
 
-            string userFilePath = string.Format("Users\\{0}.usr", user.Username);
+            string userFilePath = string.Format(@"Users\{0}.usr", user.Username);
 
             User registeredUser = UserManager.ReadFromFile(userFilePath);
 
@@ -61,7 +61,7 @@ namespace kdt.ThreeLevelPasswordAuthenticator.Authentication
             ValidationToken vt = new ValidationToken();
             vt.ValidationType = ValidationType.Existence;
 
-            string userFilePath = string.Format("Users\\{0}.usr", user.Username);
+            string userFilePath = string.Format(@"Users\{0}.usr", user.Username);
 
             if (File.Exists(userFilePath))
             {
@@ -80,7 +80,7 @@ namespace kdt.ThreeLevelPasswordAuthenticator.Authentication
             ValidationToken vt = new ValidationToken();
             vt.ValidationType = ValidationType.Captcha;
 
-            if (input == "0q54ax") // HACK: Create a randomized set of captcha images and affix random values.
+            if (input == "0ba1t484") // HACK: Create a randomized set of captcha images and affix random values.
             {
                 vt.Result = Token.Matched;
             }
