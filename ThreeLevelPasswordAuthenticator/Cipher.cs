@@ -11,6 +11,8 @@ namespace kdt.ThreeLevelPasswordAuthenticator.Security
 {
     public class Cipher // TODO: Document the class and its methods.
     {
+        #region Encryption
+
         /// <summary>
         /// Encrypts an array of data using a Key and IV.
         /// </summary>
@@ -82,6 +84,10 @@ namespace kdt.ThreeLevelPasswordAuthenticator.Security
             cs.Close();
         }
 
+        #endregion Encryption
+
+        #region Decryption
+
         /// <summary>
         /// Encrypts an array of data using a Key and IV.
         /// </summary>
@@ -152,5 +158,7 @@ namespace kdt.ThreeLevelPasswordAuthenticator.Security
             fsIn.Close();
             cs.Close();
         }
+
+        #endregion Decryption
     }
 }

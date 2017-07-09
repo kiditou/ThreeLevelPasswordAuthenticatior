@@ -4,13 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.IO;
+
+using kdt.ThreeLevelPasswordAuthenticator.UserManagement;
 using kdt.ThreeLevelPasswordAuthenticator.Security;
+using kdt.ThreeLevelPasswordAuthenticator.Authentication;
 
 namespace UnitTest
 {
     internal class Program
     {
         private static void Main(string[] args)
+        {
+            ValditationTest();
+        }
+
+        private static void ValditationTest()
+        {
+            User kiditou = new User("Ron Michael", "kiditou", "endGemePlease", "I4m,y0urF4th3r");
+            ValidationToken vt = Authenticator.AuthenticatePassword(kiditou);
+            Console.WriteLine(kiditou.Password);
+            Console.WriteLine();
+            Console.WriteLine("Validation Type: {0}", vt.ValidationType);
+            Console.WriteLine("Validation Result: {0}", vt.Result.ToString());
+        }
+
+        private static void UserManagerTest()
+        {
+            User kiditou = new User("Ron Michael", "kiditou", "endGemePlease", "I4m,y0urF4th3r");
+            User user = UserManager.ReadFromFile(@"Users\kiditou.usr");
+            Console.WriteLine(user.Name);
+        }
+
+        private static void EncryptionTestingForFiles()
         {
             string clearFile = @"G:\TestDirectory\kdt.txt";
             string encryptedFile = @"G:\TestDirectory\kdt.txt.cry";
